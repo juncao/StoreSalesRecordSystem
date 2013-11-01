@@ -26,7 +26,6 @@ namespace Project2
 {
     public partial class frmCatalog : Form
     {
-
         private salesOrderForm salesForm;
 
         public frmCatalog(salesOrderForm s)
@@ -34,7 +33,6 @@ namespace Project2
             InitializeComponent();
             salesForm = s;
         }
-
 
         private void frmCatalog_Load(object sender, EventArgs e)
         {
@@ -62,19 +60,15 @@ namespace Project2
         // This is a click event related to all cells
         public void clickeAddOrder(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            int index = e.RowIndex;
+            try
             {
-                int index = e.RowIndex;
-
-                try
-                {
-                    // Add a new sales line on the realetd sales form
-                    salesForm.addNewSalesLine(index);
-                }
-                catch (ArgumentException)
-                {
-                    MessageBox.Show("This product already in order form.");
-                }
+                // Add a new sales line on the realetd sales form
+                salesForm.addNewSalesLine(index);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("This product already in order form.");
             }
         }
 

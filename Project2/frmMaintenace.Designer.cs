@@ -66,8 +66,8 @@
             this.dgSuppliers = new System.Windows.Forms.DataGridView();
             this.ColSupplierEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lvlIntroMessage = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.lvlIntroMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.tabPageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmployees)).BeginInit();
@@ -482,16 +482,6 @@
             this.panel2.Size = new System.Drawing.Size(775, 30);
             this.panel2.TabIndex = 3;
             // 
-            // lvlIntroMessage
-            // 
-            this.lvlIntroMessage.AutoSize = true;
-            this.lvlIntroMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lvlIntroMessage.Location = new System.Drawing.Point(365, 10);
-            this.lvlIntroMessage.Name = "lvlIntroMessage";
-            this.lvlIntroMessage.Size = new System.Drawing.Size(213, 13);
-            this.lvlIntroMessage.TabIndex = 1;
-            this.lvlIntroMessage.Text = "Click \"Edit\" button  to edit item informations.";
-            // 
             // btnInsert
             // 
             this.btnInsert.Location = new System.Drawing.Point(12, 5);
@@ -501,6 +491,16 @@
             this.btnInsert.Text = "Add New Customer";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // lvlIntroMessage
+            // 
+            this.lvlIntroMessage.AutoSize = true;
+            this.lvlIntroMessage.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lvlIntroMessage.Location = new System.Drawing.Point(365, 10);
+            this.lvlIntroMessage.Name = "lvlIntroMessage";
+            this.lvlIntroMessage.Size = new System.Drawing.Size(213, 13);
+            this.lvlIntroMessage.TabIndex = 1;
+            this.lvlIntroMessage.Text = "Click \"Edit\" button  to edit item informations.";
             // 
             // frmMaintenace
             // 

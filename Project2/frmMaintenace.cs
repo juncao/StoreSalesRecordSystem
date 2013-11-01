@@ -11,35 +11,6 @@ using System.Collections;
 
 namespace Project2
 {
-
-
-    /// <summary>
-    /// Class name: Maintenance
-    /// Class description: Provide categoried maintenace page
-    /// included customer,employee,product,category,shipper,and supplier
-    /// in multiple view by using tagpages
-    /// in each tabpage
-    /// you can view partial information of  every maintanacing item in each row.
-    /// Paging the list of every maintanacing.
-    /// you can link to ItemEdit page to update information for every items
-    /// You can also insert new record
-    /// by clicking "insert" button 
-    /// and then going to ItemEdit page
-    /// for making inserting  
-    /// Side effects (if any) including Errors and Exceptions: N/A
-    /// Constraints: none
-    /// Assumptions: none
-    /// Required libraries: 
-    ///     using System;
-    ///     System.Data;
-    ///     System.Web.UI.WebControls;
-    ///     System.Web.UI.WebControls.WebParts;
-    ///     System.Web.UI.HtmlControls;
-    ///     System.Data.OleDb;
-    ///     System.Drawing;
-    /// Any warnings for maintenance: none
-    /// Unresolved issues: none
-    /// </summary>
     public partial class frmMaintenace : Form
     {
 
@@ -57,39 +28,14 @@ namespace Project2
 
         public delegate void Update();
 
-        #region constructer public frmMaintenace(Business myBusiness)
-        /// <summary>
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="myBusiness">Business reference type allowing to pass bussiness object reference to this from</param>
+
         public frmMaintenace(Business myBusiness)
         {
             InitializeComponent();
             this.myBusiness = myBusiness;
-            //FillCustomerGrid();
+            FillCustomerGrid();
         }
 
-        #endregion
-
-        #region private void frmMaintenace_Load(object sender, EventArgs e)
-        /// <summary>
-        /// Method name: frmMaintenace_Load
-        /// Method description: This method is to handle the form load event
-        /// it is to assign the form text
-        /// fill every datagridview with related imformation
-        /// register delegates to relative events
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
         private void frmMaintenace_Load(object sender, EventArgs e)
         {
             this.Text = "Maintenace Form";
@@ -105,32 +51,15 @@ namespace Project2
             myBusiness.productInfChangeEvent += new Update(FillProductGrid);
             myBusiness.categoryInfChangeEvent += new Update(FillCategoryGrid);
             myBusiness.ShipperInfChangeEvent += new Update(FillShipperGrid);
-           // myBusiness.ShipperInfChangeEvent += new Update(FreshShipperGrid);
+            myBusiness.ShipperInfChangeEvent += new Update(FreshShipperGrid);
             myBusiness.SupplierInfChangeEvent += new Update(FillSupplierGrid);
         }
 
-        #endregion
-        //private void FreshShipperGrid()
-        //{
-        //    this.dgShippers.Refresh();
-        //}
+        private void FreshShipperGrid()
+        {
+            this.dgShippers.Refresh();
+        }
         #region fill gird methods
-
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillCustomerGrid()
         {
             dgCustomers.DataSource = null;
@@ -177,21 +106,6 @@ namespace Project2
 
         }
 
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillEmployeeGrid()
         {
 
@@ -238,21 +152,6 @@ namespace Project2
             
         }
 
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillCategoryGrid()
         {
  
@@ -303,22 +202,6 @@ namespace Project2
 
         }
 
-
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillProductGrid()
         {
             dgProducts.DataSource = null;
@@ -360,22 +243,6 @@ namespace Project2
             //dgProducts.DataBind();
         }
 
-
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillShipperGrid()
         {
             dgShippers.DataSource = null;
@@ -418,22 +285,6 @@ namespace Project2
             //dgShippers.DataBind();
         }
 
-
-        /// <summary>
-        /// Method name: FillCustomerGrid()
-        /// Method description: This method is to get customer information
-        /// from Business reference
-        /// and fill the information in datagridview by assigning edited table
-        /// as its source
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void FillSupplierGrid()
         {
             dgSuppliers.DataSource = null;
@@ -483,22 +334,6 @@ namespace Project2
 
 
         #region Data Grids click
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgCustomers.Columns["ColCustomerEdit"].Index && e.RowIndex >= 0)
@@ -516,23 +351,6 @@ namespace Project2
                 myfrmCustomers.Show();
             }
         }
-
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -553,22 +371,6 @@ namespace Project2
             }
         }
 
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgCategories_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgCategories.Columns["ColCategoryEdit"].Index && e.RowIndex >= 0)
@@ -589,23 +391,6 @@ namespace Project2
                 myfrmCategories.Show();
             }
         }
-
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgShippers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgShippers.Columns["ColShipperEdit"].Index && e.RowIndex >= 0)
@@ -630,22 +415,6 @@ namespace Project2
             }
         }
 
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -665,22 +434,6 @@ namespace Project2
             }
         }
 
-        /// <summary>
-        /// Method name: dgCustomers_CellClick
-        /// Method description: This method is invoked when edit button column is clicked
-        /// it will instantiate and load a Customer edition form
-        /// only one customer editing form is provide
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">DataGridViewCellEventArgs</param>
         private void dgSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -701,21 +454,6 @@ namespace Project2
         }
         #endregion
 
-        /// <summary>
-        /// Method name: btnInsert_Click
-        /// Method description: This method is to control the form openning
-        /// base on current active tabpage.
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
         private void btnInsert_Click(object sender, EventArgs e)
         {
 
@@ -779,22 +517,6 @@ namespace Project2
 
         }
 
-        /// <summary>
-        /// Method name: tbCtrl_SelectedIndexChanged
-        /// Method description: This method is to manage the text of the insert button and 
-        /// the value of currenTagPage.
-        /// currenTagPage is enum type
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
         private void tbCtrl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tbCtrl.SelectedTab == tbCtrl.TabPages["tabPageCustomers"])

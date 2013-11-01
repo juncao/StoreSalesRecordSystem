@@ -10,43 +10,6 @@ using System.IO;
 
 namespace Project2
 {
-
-    /// <summary>
-    /// Class name: FrmProductItemEdit
-    /// Class description: Provide Products maintenace page
-    /// you can view and edit informations of particular Product.
-    /// you can always link back to maintenance page 
-    /// you can delete particular Product record 
-    /// by clicking "delete" button.
-    /// You can also insert new Product record
-    /// by clicking "insert" button
-    /// when insertation, it will check whether 
-    /// the Product name existed in record
-    /// if no, commit inserting
-    /// otherwise show item existing information
-    /// and ask for your action either updating or cancel
-    /// cancel is to clear all the filed information filled out
-    /// And then employee can re-entery for inserting other record.
-    /// Side effects (if any) including Errors and Exceptions:
-    /// 1-"Updating causes a problem:Miss required information!Please check follow filed: ProductName."
-    /// 2-"Inserting causes a problem:Miss required information!Please check follow filed: ProductName."
-    /// 3-"Customer name exist ,You can change the name or update the Product information."
-    /// Constraints: 
-    ///     Name filed-It is required filed which should be filled out
-    ///                Its maximum length is 15.
-    /// Assumptions: none
-    /// Required libraries: 
-    /// System;
-    /// System.Collections.Generic;
-    /// System.ComponentModel;
-    /// System.Data;
-    /// System.Drawing;
-    /// System.Linq;
-    /// System.Text;
-    /// System.Windows.Forms;
-    /// Any warnings for maintenance: none
-    /// Unresolved issues: none
-    /// </summary>
     public partial class frmProducts : Form
     {
         private Business business;
@@ -56,29 +19,16 @@ namespace Project2
         private String EditingItemID = null;
         private String repeatInsertItemID = null;
 
-        #region constructer public frmMaintenace(Business myBusiness)
-        /// <summary>
-        /// constructer with only one parameter 
-        /// it is used by inserting
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
+        // This constructor will instantiate a form with all empty textBoxes that allows user
+        // to insert new product information
         public frmProducts(Business business)
         {
             this.business = business;
             InitializeComponent();
             this.Text = "Add New Product Form";
         }
-        #endregion
-        #region
-        /// <summary>
-        /// constructer with two parameters 
-        /// it is used by editing
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
+        // This constructor will take a product ID and display that product's information
+        // This form will show edit buttons
         public frmProducts(String EditingItemID, Business business)
         {
             this.business = business;
@@ -86,32 +36,7 @@ namespace Project2
             InitializeComponent();
             this.Text = "Editing: PorductID " + EditingItemID;
         }
-        #endregion
 
-        #region page_load and initialize array
-        /// <summary>
-        /// Method name: Page_Load
-        /// Method description: 
-        /// get all Customers informations from business object which
-        /// is store in internal varable
-        /// Show information for particular Customer
-        /// if this form is for editing
-        /// but leave empty field 
-        /// if this form is for inserting
-        /// show some button for editing the Customer
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// sender-object
-        /// e-EventArgs
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: 
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
         private void frmProducts_Load(object sender, EventArgs e)
         {
             InitializeArray();
@@ -165,21 +90,7 @@ namespace Project2
             }
             this.ActiveControl = textBoxArray[1];
         }
-        #endregion
-        /// <summary>
-        /// Method name: InitializeArrays
-        /// Method description: initialize labelArray
-        /// and textBoxArray
-        /// make easy way to manage textfield and lable
-        /// Parameter list (one or more lines per parameter): none
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: 
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
+
         private void InitializeArray()
         {
             textBoxArray = new TextBox[11];
@@ -201,23 +112,7 @@ namespace Project2
             cmbArray[1] = cmbCategoryIDs;
 
         }
-        # region return to maintain page
-        /// <summary>
-        /// Method name: btnReturn_Click
-        /// Method description: 
-        /// this method invokes by clicking the return button
-        /// it is to link back to maintain page
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: N/A
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
+
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             // Do not change anything.
@@ -225,27 +120,7 @@ namespace Project2
             this.Close();
         }
 
-        #endregion
         #region Edit Products information
-        #region update Customer information
-        /// <summary>
-        /// Method name: btnUpdate_Click
-        /// Method description: 
-        /// this method invokes by clicking the Update button
-        /// it is to invoke UpdateByID method
-        /// and then link back to maintain page
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
-
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -263,31 +138,10 @@ namespace Project2
                 textBoxArray[1].Focus();
             }
         }
-        #endregion
-
         private Boolean getDiscontinued()
         {
             return cklDiscontinued.Checked;
         }
-
-        /// <summary>
-        /// Method name: UpdateByID
-        /// Method description: 
-        /// invoke by method btnUpdate_Click(object sender, EventArgs e)
-        /// it is to update Customer information 
-        /// through call method updateCustomerInfo of business object 
-        /// Parameter list (one or more lines per parameter): CustomerID-String
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions:
-        /// "Updating causes a problem:Miss required information!Please check follow filed: CustomerName."
-        /// Constraints: require field, such as name, can not be empty
-        /// Assumptions: none
-        /// Required libraries: 
-        ///     using System;
-        ///     System.Data;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void UpdateByID(String pkValue, String[] noPKvalue,Boolean discontinuted)
         {
 
@@ -297,23 +151,6 @@ namespace Project2
         #endregion
 
         #region Insert Product information
-        /// <summary>
-        /// Method name: btnInsert_Click
-        /// Method description: 
-        /// this method invokes by clicking the Insert button
-        /// it is to invoke insertData method
-        /// and then link back to maintain page
-        /// Parameter list (one or more lines per parameter): sender and e
-        /// Return type and value: void
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: System.Data.OleDb;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <param name="sender">object</param>
-        /// <param name="e">System.EventArgs</param>
         protected void btnInsert_Click(object sender, EventArgs e)
         {
             try
@@ -353,25 +190,6 @@ namespace Project2
 
         }
 
-        /// Method name: insertData
-        /// Method description: 
-        /// invoke by method btnInsert_Click(object sender, EventArgs e)
-        /// it is to insert new Customer record to database 
-        /// through call method insertCustomer of business object 
-        /// which is store in Session varable.
-        /// Parameter list (one or more lines per parameter): CustomerID-String
-        /// Return type and value: N/A
-        /// Side effects (if any) including Errors and Exceptions:
-        /// 1-"Customer name exist <br>You can change the name or update the customer information."
-        /// 2-"Inserting causes a problem:Miss required information!Please check follow filed: CustomerName."
-        /// Constraints: customer name can not existing in store when inserting
-        /// Assumptions: none
-        /// Required libraries: 
-        ///     using System;
-        ///     System.Data;
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
         private void insertData()
         {
 
@@ -390,36 +208,11 @@ namespace Project2
         #endregion
 
         #region Help methods
-        /// <summary>
-        /// Method name: getPkValue
-        /// Method description: This method is to ge Primary key which is customer id
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String</returns>
         private String getPkValue()
         {
             return textBoxArray[0].Text;
         }
-        /// <summary>
-        /// Method name: getNoPkValue
-        /// Method description: This method is to get no-Primary key value 
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String[]
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String[]</returns>
+
         private String[] getNoPkValue()
         {
             String[] value = new String[textBoxArray.Length - 3];
@@ -445,23 +238,7 @@ namespace Project2
             return value;
         }
 
-        /// <summary>
-        /// Method name: reqiredfieldValidate
-        /// Method description: 
-        /// validate the field value
-        /// id and name are all requird 
-        /// and some field is numeric only
-        /// other words, they are not allowed to be empty
-        /// before commit unpdate process.
-        /// Parameter list (one or more lines per parameter): none
-        /// Return type and value: bool
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: 
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
+
         private Boolean numberAndReqiredfieldValidate() 
         {
             Boolean allPassed = true;

@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblProductsInfor = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.cmbCategoryIDs = new System.Windows.Forms.ComboBox();
             this.cmbSupplierIDs = new System.Windows.Forms.ComboBox();
             this.cklDiscontinued = new System.Windows.Forms.CheckBox();
@@ -56,6 +55,7 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -108,15 +108,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(374, 434);
             this.panel2.TabIndex = 1;
-            // 
-            // lblWarningMessage
-            // 
-            this.lblWarningMessage.AutoSize = true;
-            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblWarningMessage.Location = new System.Drawing.Point(55, 383);
-            this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
-            this.lblWarningMessage.TabIndex = 14;
             // 
             // cmbCategoryIDs
             // 
@@ -174,7 +165,6 @@
             // txtQuantityPerUnit
             // 
             this.txtQuantityPerUnit.Location = new System.Drawing.Point(110, 164);
-            this.txtQuantityPerUnit.MaxLength = 20;
             this.txtQuantityPerUnit.Name = "txtQuantityPerUnit";
             this.txtQuantityPerUnit.Size = new System.Drawing.Size(104, 20);
             this.txtQuantityPerUnit.TabIndex = 4;
@@ -182,7 +172,6 @@
             // txtProductName
             // 
             this.txtProductName.Location = new System.Drawing.Point(110, 50);
-            this.txtProductName.MaxLength = 40;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(212, 20);
             this.txtProductName.TabIndex = 1;
@@ -326,6 +315,15 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.AutoSize = true;
+            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblWarningMessage.Location = new System.Drawing.Point(55, 383);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblWarningMessage.TabIndex = 14;
             // 
             // frmProducts
             // 

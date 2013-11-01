@@ -84,7 +84,6 @@
             // txtCompanyName
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(135, 71);
-            this.txtCompanyName.MaxLength = 40;
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(100, 20);
             this.txtCompanyName.TabIndex = 4;
@@ -92,7 +91,6 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(135, 113);
-            this.txtPhone.MaxLength = 24;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 5;

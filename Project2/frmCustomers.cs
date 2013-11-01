@@ -12,7 +12,7 @@ namespace Project2
 
     /// <summary>
     /// Class name: FrmCustomerItemEdit
-    /// Class description: Provide customers maintenace page
+    /// Class description: Provide categoried maintenace page
     /// you can view and edit informations of particular Customer.
     /// you can always link back to maintenance page 
     /// you can delete particular Customer record 
@@ -57,29 +57,14 @@ namespace Project2
         private String EditingItemID = null;
         private String repeatInsertItemID=null;
 
-        #region constructer public frmMaintenace(Business myBusiness)
-        /// <summary>
-        /// constructer with only one parameter 
-        /// it is used by inserting
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
+
         public frmCustomers(Business business)
         {
             this.business = business;
             InitializeComponent();
             this.Text = "Add New Customer Form";
         }
-        #endregion
-        #region
-        /// <summary>
-        /// constructer with two parameters 
-        /// it is used by editing
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
+
         public frmCustomers(String EditingItemID, Business business)
         {
             //theButton = (Button)senderButton;
@@ -88,20 +73,17 @@ namespace Project2
             InitializeComponent();
             this.Text = "Editing: CustomerID " + EditingItemID;
         }
-        #endregion
+
 
         #region page_load and initialize array
         /// <summary>
         /// Method name: Page_Load
         /// Method description: 
         /// get all Customers informations from business object which
-        /// is store in internal varable
+        /// is store in Session varable
         /// Show information for particular Customer
-        /// if this form is for editing
-        /// but leave empty field 
-        /// if this form is for inserting
         /// show some button for editing the Customer
-        /// Parameter list (one or more lines per parameter): sender and e
+        /// Parameter list (one or more lines per parameter): 
         /// sender-object
         /// e-EventArgs
         /// Return type and value: N/A
@@ -109,6 +91,9 @@ namespace Project2
         /// Constraints: none
         /// Assumptions: none
         /// Required libraries: 
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -184,15 +169,17 @@ namespace Project2
         }
         /// <summary>
         /// Method name: InitializeArrays
-        /// Method description: initialize labelArray
-        /// and textBoxArray
-        /// make easy way to manage textfield and lable
+        /// Method description: 
+        /// 
         /// Parameter list (one or more lines per parameter): none
         /// Return type and value: N/A
         /// Side effects (if any) including Errors and Exceptions: N/A
         /// Constraints: none
         /// Assumptions: none
         /// Required libraries: 
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -242,7 +229,7 @@ namespace Project2
         /// Side effects (if any) including Errors and Exceptions: N/A
         /// Constraints: none
         /// Assumptions: none
-        /// Required libraries: N/A
+        /// Required libraries: System.Data.OleDb;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -306,6 +293,7 @@ namespace Project2
         /// invoke by method btnUpdate_Click(object sender, EventArgs e)
         /// it is to update Customer information 
         /// through call method updateCustomerInfo of business object 
+        /// which is store in Session varable.
         /// Parameter list (one or more lines per parameter): CustomerID-String
         /// Return type and value: N/A
         /// Side effects (if any) including Errors and Exceptions:
@@ -315,6 +303,9 @@ namespace Project2
         /// Required libraries: 
         ///     using System;
         ///     System.Data;
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -337,38 +328,10 @@ namespace Project2
 
         # endregion
 
-
-        /// <summary>
-        /// Method name: getPkValue
-        /// Method description: This method is to ge Primary key which is customer id
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String</returns>
         private String getPkValue()
         {
             return textBoxArray[0].Text;
         }
-
-        /// <summary>
-        /// Method name: getNoPkValue
-        /// Method description: This method is to get no-Primary key value 
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String[]
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String[]</returns>
         private String[] getNoPkValue()
         {
             //        String[] key = new String[labelArray.Length - 1];
@@ -384,11 +347,9 @@ namespace Project2
         }
 
         /// <summary>
-        /// Method name: reqiredfieldValidate
+        /// Method name: isRequiredFiledEmpty
         /// Method description: 
-        /// validate the field value
-        /// id and name are all requird 
-        /// other words, they are not allowed to be empty
+        /// Check whether the name filed is un-filed 
         /// before commit unpdate process.
         /// Parameter list (one or more lines per parameter): none
         /// Return type and value: bool
@@ -396,6 +357,9 @@ namespace Project2
         /// Constraints: none
         /// Assumptions: none
         /// Required libraries: 
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -491,6 +455,9 @@ namespace Project2
         /// Required libraries: 
         ///     using System;
         ///     System.Data;
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>

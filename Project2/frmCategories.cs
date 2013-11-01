@@ -1,19 +1,4 @@
-﻿/*******************************************************************/
-/**                                                               **/
-/**    Group Number                :  3                           **/
-/**    Student Name                :  Jun Cao, Desen Guo          **/
-/**                                :  Yue Cheng, Muran Yang       **/
-/**                                   Sufeng Ding                 **/
-/**    Course Number               :  CST8256                     **/
-/**    Lab Section Number          :  442                         **/
-/**    Professor Name              :  John Tappin                 **/
-/**    Assignment Name/Number/Date :  Assignment 4                **/
-/**    Comment                     :  Partial code is derived from                                      **/
-/**                                   Web Programming Assignment4                            **/
-/**                                   which did by Jun Cao                            **/
-/**                                                               **/
-/** ****************************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +13,7 @@ namespace Project2
 
     /// <summary>
     /// Class name: FrmcategoryItemEdit
-    /// Class description: Provide categories maintenace page
+    /// Class description: Provide categoried maintenace page
     /// you can view and edit informations of particular category.
     /// you can always link back to maintenance page 
     /// you can delete particular category record 
@@ -74,30 +59,13 @@ namespace Project2
         private String repeatInsertItemID = null;
         private byte[] thisPicture;
         string updatePicture = null;
-
-        #region constructer public frmMaintenace(Business myBusiness)
-        /// <summary>
-        /// constructer with only one parameter 
-        /// it is used by inserting
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
         public frmCategories(Business business)
         {
             this.business = business;
             InitializeComponent();
             this.Text = "Add New Category Form";
         }
-        #endregion
-        #region
-        /// <summary>
-        /// constructer with two parameters 
-        /// it is used by editing
-        /// initialize component
-        /// assign Business reference to myBusiness of this page
-        /// </summary>
-        /// <param name="business">Business referent type</param>
+
         public frmCategories(String EditingItemID, Business business, Byte[] picture)
         {
             //theButton = (Button)senderButton;
@@ -108,20 +76,16 @@ namespace Project2
             this.Text = "Editing: CategoryID " + EditingItemID;
         }
 
-        #endregion
 
         #region page_load and initialize array
         /// <summary>
         /// Method name: Page_Load
         /// Method description: 
-        /// get all Customers informations from business object which
-        /// is store in internal varable
-        /// Show information for particular Customer
-        /// if this form is for editing
-        /// but leave empty field 
-        /// if this form is for inserting
-        /// show some button for editing the Customer
-        /// Parameter list (one or more lines per parameter): sender and e
+        /// get all Categories informations from business object which
+        /// is store in Session varable
+        /// Show information for particular category
+        /// show some button for editing the category
+        /// Parameter list (one or more lines per parameter): 
         /// sender-object
         /// e-EventArgs
         /// Return type and value: N/A
@@ -129,6 +93,9 @@ namespace Project2
         /// Constraints: none
         /// Assumptions: none
         /// Required libraries: 
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -137,7 +104,6 @@ namespace Project2
         private void frmCategories_Load(object sender, EventArgs e)
         {
             InitializeArrays();
-            picPicture.ImageLocation = @"..\..\image\defaultImageforCategory.bmp";
 
             categoryInformation = business.getCategoryInformation(); ;
             string[] currentItemInformation = new string[categoryInformation.GetLength(1)];
@@ -188,15 +154,17 @@ namespace Project2
         }
         /// <summary>
         /// Method name: InitializeArrays
-        /// Method description: initialize labelArray
-        /// and textBoxArray
-        /// make easy way to manage textfield and lable
+        /// Method description: 
+        /// 
         /// Parameter list (one or more lines per parameter): none
         /// Return type and value: N/A
         /// Side effects (if any) including Errors and Exceptions: N/A
         /// Constraints: none
         /// Assumptions: none
         /// Required libraries: 
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -242,7 +210,7 @@ namespace Project2
         /// Side effects (if any) including Errors and Exceptions: N/A
         /// Constraints: none
         /// Assumptions: none
-        /// Required libraries: N/A
+        /// Required libraries: System.Data.OleDb;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -257,7 +225,7 @@ namespace Project2
         }
         #endregion
 
-        #region update Customer information
+        #region update category information
         /// <summary>
         /// Method name: btnUpdate_Click
         /// Method description: 
@@ -303,17 +271,21 @@ namespace Project2
         /// Method name: UpdateByID
         /// Method description: 
         /// invoke by method btnUpdate_Click(object sender, EventArgs e)
-        /// it is to update Customer information 
-        /// through call method updateCustomerInfo of business object 
-        /// Parameter list (one or more lines per parameter): CustomerID-String
+        /// it is to update category information 
+        /// through call method updatecategoryInfo of business object 
+        /// which is store in Session varable.
+        /// Parameter list (one or more lines per parameter): categoryID-String
         /// Return type and value: N/A
         /// Side effects (if any) including Errors and Exceptions:
-        /// "Updating causes a problem:Miss required information!Please check follow filed: CustomerName."
+        /// "Updating causes a problem:Miss required information!Please check follow filed: categoryName."
         /// Constraints: require field, such as name, can not be empty
         /// Assumptions: none
         /// Required libraries: 
         ///     using System;
         ///     System.Data;
+        ///     System.Web.UI.WebControls;
+        ///     System.Web.UI.WebControls.WebParts;
+        ///     System.Web.UI.HtmlControls;
         /// Any warnings for maintenance: none
         /// Unresolved issues: none
         /// </summary>
@@ -335,36 +307,11 @@ namespace Project2
         }
 
         # endregion
-        /// <summary>
-        /// Method name: getPkValue
-        /// Method description: This method is to ge Primary key which is customer id
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String</returns>
+
         private String getPkValue()
         {
             return textBoxArray[0].Text;
         }
-        /// <summary>
-        /// Method name: getPkValue
-        /// Method description: This method is to get no-Primary key value 
-        /// Parameter list (one or more lines per parameter): N/A
-        /// Return type and value: String[]
-        /// Side effects (if any) including Errors and Exceptions: N/A
-        /// Constraints: none
-        /// Assumptions: none
-        /// Required libraries: none
-        /// Any warnings for maintenance: none
-        /// Unresolved issues: none
-        /// </summary>
-        /// <returns>String[]</returns>
         private String[] getNoPkValue()
         {
             //        String[] key = new String[labelArray.Length - 1];
@@ -400,11 +347,9 @@ namespace Project2
 
 
         /// <summary>
-        /// Method name: reqiredfieldValidate
+        /// Method name: isRequiredFiledEmpty
         /// Method description: 
-        /// validate the field value
-        /// id and name are all requird 
-        /// other words, they are not allowed to be empty
+        /// Check whether the name filed is un-filed 
         /// before commit unpdate process.
         /// Parameter list (one or more lines per parameter): none
         /// Return type and value: bool
@@ -422,17 +367,10 @@ namespace Project2
         {
             Boolean allPassed = true;
             string categoryName = textBoxArray[1].Text.Trim();
-            // The change image part not works well yet.
-            // We transferrd image to byte[], but if we pass it to database
-            // it won't display correctly
-            // We are thinking to save uplodaded image as a local image
-            // then insert to database just like that
-            // We don't have time to try that way yet.
-            // So we just blocked this change image funtion
-            // We will fix it at the future
+
             if (updatePicture != null)
             {
-                lblWarningMessage.Text = "Image format not supoort yet.";
+                lblWarningMessage.Text = "Invaid image format.";
                 allPassed = false;
             }
 
@@ -505,14 +443,14 @@ namespace Project2
         /// Method name: insertData
         /// Method description: 
         /// invoke by method btnInsert_Click(object sender, EventArgs e)
-        /// it is to insert new Employee record to database 
-        /// through call method insertEmployee of business object 
+        /// it is to insert new category record to database 
+        /// through call method insertcategory of business object 
         /// which is store in Session varable.
-        /// Parameter list (one or more lines per parameter): EmployeeID-String
+        /// Parameter list (one or more lines per parameter): categoryID-String
         /// Return type and value: N/A
         /// Side effects (if any) including Errors and Exceptions:
-        /// 1-"Employee name exist <br>You can change the name or update the customer information."
-        /// 2-"Inserting causes a problem:Miss required information!Please check follow filed: EmployeeName."
+        /// 1-"category name exist <br>You can change the name or update the customer information."
+        /// 2-"Inserting causes a problem:Miss required information!Please check follow filed: categoryName."
         /// Constraints: customer name can not existing in store when inserting
         /// Assumptions: none
         /// Required libraries: 
@@ -526,6 +464,8 @@ namespace Project2
         /// </summary>
         private void insertData()
         {
+
+
 
                 for (int i = 0; i < categoryInformation.GetLength(0); i++)
                 {
@@ -542,7 +482,7 @@ namespace Project2
 
         #endregion
 
-        // Upload a new image
+
         private void btnUploadNewPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog newPicture = new OpenFileDialog();
@@ -571,7 +511,6 @@ namespace Project2
             picPicture.Image = null;
             updatePicture = null;
             btnDeleteUploadedPicture.Enabled = false;
-            picPicture.ImageLocation = @"..\..\image\defaultImageforCategory.bmp";
         }
     }
 }

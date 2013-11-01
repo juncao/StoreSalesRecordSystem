@@ -67,9 +67,7 @@ public class NorthWindAccess
     private OleDbCommand NWDeleteSupplierCommand;
 
     private OleDbCommand NWInsertCategoryCommand;
-    //private OleDbCommand NWUpdateCategoryCommand;
-    private OleDbCommand NWUpdateCategoryCommandWithpicture;
-    private OleDbCommand NWUpdateCategoryCommandWithoutpicture;
+    private OleDbCommand NWUpdateCategoryCommand;
     private OleDbCommand NWDeleteCategoryCommand;
     private OleDbDataAdapter NWDataAdapter;
     private DataSet dsNW;
@@ -90,13 +88,6 @@ public class NorthWindAccess
 		#region instantiate the OleDb Objects
 		NWDataAdapter = new OleDbDataAdapter();
 		NWSelectCommand = new OleDbCommand();
-
-
-
-        NWInsertCommand = new OleDbCommand();
-		NWUpdateCommand = new OleDbCommand();
-        NWDeleteCommand = new OleDbCommand();
-
 		NWInsertCustomerCommand = new OleDbCommand();
 		NWUpdateCustomerCommand = new OleDbCommand();
         NWDeleteCustomerCommand = new OleDbCommand();
@@ -118,9 +109,7 @@ public class NorthWindAccess
         NWDeleteSupplierCommand = new OleDbCommand();
 
         NWInsertCategoryCommand = new OleDbCommand();
-        //NWUpdateCategoryCommand = new OleDbCommand();
-        NWUpdateCategoryCommandWithpicture = new OleDbCommand();
-        NWUpdateCategoryCommandWithoutpicture= new OleDbCommand();
+        NWUpdateCategoryCommand = new OleDbCommand();
         NWDeleteCategoryCommand = new OleDbCommand();
 
 		
@@ -380,27 +369,15 @@ public class NorthWindAccess
         #endregion
         #region NWUpdateCategoryCommand
 
-        NWUpdateCategoryCommandWithpicture.CommandText = @"UPDATE Categories SET categoryName = ?, description=?,picture = ? WHERE (CategoryID = ?)";
+        NWUpdateCategoryCommand.CommandText = @"UPDATE Categories SET categoryName = ?, description=?,picture = ? WHERE (CategoryID = ?)";
 
 
-        NWUpdateCategoryCommandWithpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("categoryName", System.Data.OleDb.OleDbType.VarWChar, 15, "categoryName"));
-        NWUpdateCategoryCommandWithpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("description", System.Data.OleDb.OleDbType.VarWChar, 30, "description"));
-        NWUpdateCategoryCommandWithpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("picture", System.Data.OleDb.OleDbType.LongVarBinary, 30, "picture"));
-        NWUpdateCategoryCommandWithpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("CategoryID", System.Data.OleDb.OleDbType.Integer, 5, "CategoryID"));
+        NWUpdateCategoryCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter("categoryName", System.Data.OleDb.OleDbType.VarWChar, 15, "categoryName"));
+        NWUpdateCategoryCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter("description", System.Data.OleDb.OleDbType.VarWChar, 30, "description"));
+        NWUpdateCategoryCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter("picture", System.Data.OleDb.OleDbType.LongVarBinary, 30, "picture"));
+        NWUpdateCategoryCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter("CategoryID", System.Data.OleDb.OleDbType.Integer, 5, "CategoryID"));
 
-        NWUpdateCategoryCommandWithpicture.Connection = NWConnection;
-        #endregion
-        #region NWUpdateCategoryCommand
-
-        NWUpdateCategoryCommandWithoutpicture.CommandText = @"UPDATE Categories SET categoryName = ?, description=? WHERE (CategoryID = ?)";
-
-
-        NWUpdateCategoryCommandWithoutpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("categoryName", System.Data.OleDb.OleDbType.VarWChar, 15, "categoryName"));
-        NWUpdateCategoryCommandWithoutpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("description", System.Data.OleDb.OleDbType.VarWChar, 30, "description"));
-        //NWUpdateCategoryCommandWithoutpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("picture", System.Data.OleDb.OleDbType.LongVarBinary, 30, "picture"));
-        NWUpdateCategoryCommandWithoutpicture.Parameters.Add(new System.Data.OleDb.OleDbParameter("CategoryID", System.Data.OleDb.OleDbType.Integer, 5, "CategoryID"));
-
-        NWUpdateCategoryCommandWithoutpicture.Connection = NWConnection;
+        NWUpdateCategoryCommand.Connection = NWConnection;
         #endregion
         #region NWDeleteCategoryCommand
         // 
@@ -1614,102 +1591,42 @@ public class NorthWindAccess
     public void updateCategoryInfo(String CategoryID, String[] noPKvalue, Byte[] picture)
     {
 
-        
         try
         {
-            if (picture == null)
+            int i = 0;
+            foreach (System.Data.OleDb.OleDbParameter p in NWUpdateCategoryCommand.Parameters)
             {
 
-                int i = 0;
-                foreach (System.Data.OleDb.OleDbParameter p in NWUpdateCategoryCommandWithoutpicture.Parameters)
+                if (i == 2)
                 {
-
-                    if (i == 2)
-                    {
-                        p.Value = Convert.ToInt32(CategoryID);
-                    }
-
-                    else if ((noPKvalue[i].Trim().Length) == 0)
+                    if (picture == null)
                     {
                         p.Value = DBNull.Value;
                     }
                     else
                     {
-                        p.Value = noPKvalue[i];
-                    }
-                    i++;
-                }
-                NWConnection.Open();
-                NWUpdateCategoryCommandWithoutpicture.ExecuteNonQuery();
-            }
-            else
-            {
-                int i = 0;
-                foreach (System.Data.OleDb.OleDbParameter p in NWUpdateCategoryCommandWithpicture.Parameters)
-                {
-
-                    if (i == 2)
-                    {
-
                         p.Value = picture;
-
                     }
-                    else if (i == 3)
-                    {
-                        p.Value = Convert.ToInt32(CategoryID);
-                    }
-
-                    else if ((noPKvalue[i].Trim().Length) == 0)
-                    {
-                        p.Value = DBNull.Value;
-                    }
-                    else
-                    {
-                        p.Value = noPKvalue[i];
-                    }
-                    i++;
 
                 }
-                NWConnection.Open();
-                NWUpdateCategoryCommandWithpicture.ExecuteNonQuery();
+                else if (i == 3)
+                {
+                    p.Value =  Convert.ToInt32(CategoryID);
+                }
+
+                else if ((noPKvalue[i].Trim().Length) == 0)
+                {
+                    p.Value = DBNull.Value;
+                }
+                else
+                {
+                    p.Value = noPKvalue[i];
+                }
+                i++;
             }
 
-        //try
-        //{
-        //    int i = 0;
-        //    foreach (System.Data.OleDb.OleDbParameter p in NWUpdateCategoryCommandWithpicture.Parameters)
-        //    {
-
-        //        if (i == 2)
-        //        {
-        //            if (picture == null)
-        //            {
-        //                p.Value = DBNull.Value;
-        //            }
-        //            else
-        //            {
-        //                p.Value = picture;
-        //            }
-
-        //        }
-        //        else if (i == 3)
-        //        {
-        //            p.Value =  Convert.ToInt32(CategoryID);
-        //        }
-
-        //        else if ((noPKvalue[i].Trim().Length) == 0)
-        //        {
-        //            p.Value = DBNull.Value;
-        //        }
-        //        else
-        //        {
-        //            p.Value = noPKvalue[i];
-        //        }
-        //        i++;
-        //    }
-
-            //NWConnection.Open();
-            //NWUpdateCategoryCommandWithpicture.ExecuteNonQuery();
+            NWConnection.Open();
+            NWUpdateCategoryCommand.ExecuteNonQuery();
 
 
 

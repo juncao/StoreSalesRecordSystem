@@ -87,7 +87,6 @@
             this.salesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.salesList.Size = new System.Drawing.Size(569, 182);
             this.salesList.TabIndex = 8;
-            this.salesList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProducts_CellValueChanged);
             // 
             // product
             // 

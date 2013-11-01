@@ -33,7 +33,6 @@
             this.lblCategoriesInfo = new System.Windows.Forms.Label();
             this.lblCategoryID = new System.Windows.Forms.Label();
             this.pnlCateInfo = new System.Windows.Forms.Panel();
-            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.btnDeleteUploadedPicture = new System.Windows.Forms.Button();
             this.btnUploadNewPicture = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,6 +45,7 @@
             this.lblPicture = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.pnlCateTop = new System.Windows.Forms.Panel();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPicture)).BeginInit();
             this.pnlCateInfo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -107,15 +107,6 @@
             this.pnlCateInfo.Name = "pnlCateInfo";
             this.pnlCateInfo.Size = new System.Drawing.Size(442, 431);
             this.pnlCateInfo.TabIndex = 12;
-            // 
-            // lblWarningMessage
-            // 
-            this.lblWarningMessage.AutoSize = true;
-            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblWarningMessage.Location = new System.Drawing.Point(118, 344);
-            this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
-            this.lblWarningMessage.TabIndex = 11;
             // 
             // btnDeleteUploadedPicture
             // 
@@ -197,7 +188,6 @@
             // txtCategoryName
             // 
             this.txtCategoryName.Location = new System.Drawing.Point(118, 79);
-            this.txtCategoryName.MaxLength = 15;
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(211, 20);
             this.txtCategoryName.TabIndex = 1;
@@ -228,6 +218,15 @@
             this.pnlCateTop.Name = "pnlCateTop";
             this.pnlCateTop.Size = new System.Drawing.Size(442, 38);
             this.pnlCateTop.TabIndex = 11;
+            // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.AutoSize = true;
+            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblWarningMessage.Location = new System.Drawing.Point(118, 344);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblWarningMessage.TabIndex = 11;
             // 
             // frmCategories
             // 

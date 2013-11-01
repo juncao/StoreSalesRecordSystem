@@ -31,7 +31,6 @@
             this.pnlSupplierInforTop = new System.Windows.Forms.Panel();
             this.lblSupplierInfor = new System.Windows.Forms.Label();
             this.pnlSupplierInforFill = new System.Windows.Forms.Panel();
-            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.txtSupplierID = new System.Windows.Forms.TextBox();
             this.txtRegion = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblWarningMessage = new System.Windows.Forms.Label();
             this.pnlSupplierInforTop.SuspendLayout();
             this.pnlSupplierInforFill.SuspendLayout();
             this.pnlSupplierInforButton.SuspendLayout();
@@ -116,15 +116,6 @@
             this.pnlSupplierInforFill.Size = new System.Drawing.Size(380, 425);
             this.pnlSupplierInforFill.TabIndex = 1;
             // 
-            // lblWarningMessage
-            // 
-            this.lblWarningMessage.AutoSize = true;
-            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblWarningMessage.Location = new System.Drawing.Point(48, 363);
-            this.lblWarningMessage.Name = "lblWarningMessage";
-            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
-            this.lblWarningMessage.TabIndex = 12;
-            // 
             // txtSupplierID
             // 
             this.txtSupplierID.Location = new System.Drawing.Point(123, 12);
@@ -136,7 +127,6 @@
             // txtRegion
             // 
             this.txtRegion.Location = new System.Drawing.Point(123, 178);
-            this.txtRegion.MaxLength = 15;
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(112, 20);
             this.txtRegion.TabIndex = 6;
@@ -144,7 +134,6 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(123, 268);
-            this.txtPhone.MaxLength = 24;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(187, 20);
             this.txtPhone.TabIndex = 9;
@@ -152,7 +141,6 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(123, 148);
-            this.txtCity.MaxLength = 15;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(112, 20);
             this.txtCity.TabIndex = 5;
@@ -160,7 +148,6 @@
             // txtCompanyName
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(123, 38);
-            this.txtCompanyName.MaxLength = 40;
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(187, 20);
             this.txtCompanyName.TabIndex = 1;
@@ -168,7 +155,6 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(123, 122);
-            this.txtAddress.MaxLength = 60;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(234, 20);
             this.txtAddress.TabIndex = 4;
@@ -176,7 +162,6 @@
             // txtFax
             // 
             this.txtFax.Location = new System.Drawing.Point(123, 299);
-            this.txtFax.MaxLength = 24;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(187, 20);
             this.txtFax.TabIndex = 10;
@@ -184,7 +169,6 @@
             // txtPostalCode
             // 
             this.txtPostalCode.Location = new System.Drawing.Point(123, 209);
-            this.txtPostalCode.MaxLength = 10;
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(112, 20);
             this.txtPostalCode.TabIndex = 7;
@@ -192,7 +176,6 @@
             // txtContactName
             // 
             this.txtContactName.Location = new System.Drawing.Point(123, 67);
-            this.txtContactName.MaxLength = 30;
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(187, 20);
             this.txtContactName.TabIndex = 2;
@@ -200,7 +183,6 @@
             // txtContactTitle
             // 
             this.txtContactTitle.Location = new System.Drawing.Point(123, 95);
-            this.txtContactTitle.MaxLength = 30;
             this.txtContactTitle.Name = "txtContactTitle";
             this.txtContactTitle.Size = new System.Drawing.Size(187, 20);
             this.txtContactTitle.TabIndex = 3;
@@ -215,7 +197,6 @@
             // txtCountry
             // 
             this.txtCountry.Location = new System.Drawing.Point(123, 240);
-            this.txtCountry.MaxLength = 15;
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(112, 20);
             this.txtCountry.TabIndex = 8;
@@ -368,6 +349,15 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // lblWarningMessage
+            // 
+            this.lblWarningMessage.AutoSize = true;
+            this.lblWarningMessage.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblWarningMessage.Location = new System.Drawing.Point(48, 363);
+            this.lblWarningMessage.Name = "lblWarningMessage";
+            this.lblWarningMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblWarningMessage.TabIndex = 12;
             // 
             // frmSuppliers
             // 
